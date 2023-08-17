@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 require('./services/users')(app)
+require('./services/admin')(app)
 
 app.listen(config.port, () => {
     console.log("puerto a la escucha");
