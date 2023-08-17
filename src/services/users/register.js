@@ -1,4 +1,5 @@
 const pool = require('./../../libs/postgres.pool')
+const { encriptPassword } = require('../../libs/encript')
 
 async function register (req, res) {
     console.log('New register:')
@@ -6,9 +7,11 @@ async function register (req, res) {
     //console.log('>Body:')
     //console.log(body)
 
+    const password_enc = await encriptPassword(body.password)
+
     const query_create_user = `INSERT INTO users
         (name, email, password_encript) 
-        VALUES ('${body.name}', '${body.email}', '${body.password}');
+        VALUES ('${body.name}', '${body.email}', '${password_enc}');
     `
 
     try {

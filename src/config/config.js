@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const config = {
     port: process.env.PORT,
+    salt: process.env.SALT ?? 'apple',
     db: {
         name: process.env.DB,
         db_postgres: {
