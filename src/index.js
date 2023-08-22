@@ -8,6 +8,8 @@ app.disable('x-powered-by')
 app.use(cors())
 app.use(express.json())
 
+app.use(require('./middlewares/info-request.js'))
+
 app.get('/', (req, res) => {
     res.json({message:'correct connection'})
 })
