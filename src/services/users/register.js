@@ -1,5 +1,6 @@
 const pool = require('./../../libs/postgres.pool')
 const { encriptPassword } = require('../../libs/encript')
+const { Create: JWTCreate } = require('./../../libs/jwt')
 
 async function register (req, res) {
     console.log('New register:')
@@ -18,7 +19,16 @@ async function register (req, res) {
         const rta = await pool.query(query_create_user)
         if (!!rta.rowCount && rta.rowCount > 0) {
             console.log('User created')
-            res.status(200).json({message:'Usuario creado'})
+            const json = {
+                name: body.name,
+                email: body.email
+            }
+            const jwt = await JWTCreate(json)
+            res.status(200).json({
+                message:'Usuario creado',
+                user: json,
+                jwt: jwt
+            })
         } else {
             console.log('Algun problema al crear el usuario:')
             console.log(rta)

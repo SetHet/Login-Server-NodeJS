@@ -6,4 +6,12 @@ async function encriptPassword(password){
     return password_enc
 }
 
-module.exports = { encriptPassword }
+function sha256(text){
+    const enc = crypto.createHash('sha256', text).digest('base64')
+    return enc
+}
+
+module.exports = { 
+    encriptPassword,
+    sha256
+}

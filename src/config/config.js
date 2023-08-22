@@ -2,6 +2,9 @@ require('dotenv').config();
 
 const config = {
     port: process.env.PORT,
+    jwt: {
+        key: process.env.JWT_PRIVATE_KEY,
+    },
     salt: process.env.SALT ?? 'apple',
     db: {
         name: process.env.DB,

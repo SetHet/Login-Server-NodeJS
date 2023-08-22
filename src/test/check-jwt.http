@@ -1,3 +1,4 @@
-GET http://localhost:4000/user/checkjwt
+GET http://localhost:4000/user/checkjwt HTTP/1.1
+Authorization: Bearer eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..pucYgMnonfWOmJ_HUtN6Tg.FEewThDbkYyrabc464l4z8sjfXWIQ3q0MluXoo_TnsDOhM7zB1kLpRdpcJTuR63Ul1d_Cx8YTQay9KVqZMOS-H24Ab36xu6pdzxsdXX_N_8ooXdCm2bjtAjuMr3O7pwcXFdUMbU2-Oe_DVrAUd4dMw.uvkLXjIyqElGaZicSXk1yA
 
 ###
