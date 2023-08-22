@@ -5,8 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "docker-compose up -d && sleep 1 && node --watch src/index.js",
-    "devstop": "docker-compose stop"
+    "dev": "node --watch src/index.js",
+    "docker": "docker-compose up -d",
+    "devdocker": "docker-compose up -d && sleep 1 && node --watch src/index.js",
+    "devstop": "docker-compose stop",
+    "npm run dockerdown": "docker-compose down",
+    "npm run devdestroy": "docker-compose down"
   },
   "keywords": [],
   "author": "",
