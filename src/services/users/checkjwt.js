@@ -5,7 +5,7 @@ async function checkJWT (req, res) {
     token = req.token
     console.log(token)
     const real = await Verify(token)
-    res.json({message:'in process: check JWT'})
+    res.json({message:real})
 }
 
 module.exports = checkJWT
