@@ -5,6 +5,7 @@ async function checkJWT (req, res) {
     token = req.token
     console.log(token)
     const real = await Verify(token)
+    console.log(real)
     res.json({message:real})
 }
 

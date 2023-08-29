@@ -5,21 +5,28 @@ const crypto =  require('node:crypto')
 
 const privateKey = fs.readFileSync(__dirname+'/../keys/.private.key', { encoding: 'utf8', flag: 'r' })
 const publicKey = fs.readFileSync(__dirname+'/../keys/.public.key.pem', { encoding: 'utf8', flag: 'r' })
-// console.log(privateKey)
-// console.log(publicKey)
 
 async function Verify(token){
     //const real = await jose.jwtVerify(jwt, secret)
     let real
-    jwt.verify(token, publicKey, function(err, decoded) {
-        if (decoded) {
+    const j = jwt.verify(token, publicKey, function(err, decoded) {
+        if (err) {
+            real = {
+                error: err
+            }
+        } 
+        else if (decoded) {
             real = decoded
+            console.log('decoded')
         }
-        //console.log(decoded) // bar
-        console.log(err)
-      })
-    console.log('resultado')
-    console.log(real)
+        else {
+            real = {
+                message: 'no error y no informacion'
+            }
+        }
+    })
+    // console.log(j)
+    // console.log(real)
     return real
 }
 
@@ -31,7 +38,11 @@ async function Create(json){
         admin: false
     }
 
-    var token = jwt.sign(claim, {key: privateKey, passphrase:''}, { algorithm: 'RS256', expiresIn: '1 day' });
+    var token = jwt.sign(claim, {
+        key: privateKey, passphrase:config.passphrase
+    }, { 
+        algorithm: 'RS256', expiresIn: '1 day' 
+    });
     //var token = jwt.sign(claim, privateKey);
 
     return token

@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch src/index.js",
+    "nodemon": "npx nodemon src/index.js",
     "docker": "docker-compose up -d",
     "devdocker": "docker-compose up -d && sleep 1 && node --watch src/index.js",
+    "nodemondocker": "docker-compose up -d && sleep 1 && npx nodemon src/index.js",
     "devstop": "docker-compose stop",
     "npm run dockerdown": "docker-compose down",
     "npm run devdestroy": "docker-compose down"
@@ -21,5 +23,8 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
     "pg": "^8.11.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

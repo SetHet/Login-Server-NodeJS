@@ -6,6 +6,7 @@ const config = {
         key: process.env.JWT_PRIVATE_KEY,
     },
     salt: process.env.SALT ?? 'apple',
+    passphrase: process.env.PASSPHRASE ?? '',
     db: {
         name: process.env.DB,
         db_postgres: {

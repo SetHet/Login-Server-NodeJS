@@ -1,7 +1,7 @@
 import { generateKeyPairSync } from 'crypto';
 import { join } from 'path';
 import { writeFileSync } from 'fs';
-//import { passphrase } from './config';
+import { passphrase } from './src/config/config';
 
 const { publicKey, privateKey } = generateKeyPairSync('rsa', {
     modulusLength: 2048,
@@ -13,7 +13,7 @@ const { publicKey, privateKey } = generateKeyPairSync('rsa', {
         type: 'pkcs8',
         format: 'pem',
         cipher: 'aes-256-cbc',
-        passphrase: ''
+        passphrase: passphrase
     }
 });
 writeFileSync(join('src','keys', '.private.key'), privateKey);
