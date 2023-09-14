@@ -5,8 +5,6 @@ const { Create: JWTCreate } = require('./../../libs/jwt')
 async function register (req, res) {
     console.log('New register:')
     const body = req.body
-    //console.log('>Body:')
-    //console.log(body)
 
     const password_enc = await encriptPassword(body.password)
 
@@ -18,12 +16,12 @@ async function register (req, res) {
     try {
         const rta = await pool.query(query_create_user)
         if (!!rta.rowCount && rta.rowCount > 0) {
-            console.log('User created')
             const json = {
                 name: body.name,
                 email: body.email
             }
             const jwt = await JWTCreate(json)
+            console.log('User created')
             res.status(200).json({
                 message:'Usuario creado',
                 user: json,

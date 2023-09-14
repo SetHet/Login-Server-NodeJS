@@ -5,7 +5,7 @@ const config = {
     jwt: {
         key: process.env.JWT_PRIVATE_KEY,
     },
-    salt: process.env.SALT ?? 'apple',
+    salt: process.env.SALT ?? 'sdojfnfoib',
     passphrase: process.env.PASSPHRASE ?? '',
     db: {
         name: process.env.DB,
